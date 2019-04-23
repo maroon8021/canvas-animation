@@ -4,17 +4,20 @@
       <h1 class="title">
         canvas-animation
       </h1>
-      <canvas id="canvas" width="900" height="900"></canvas>
+      <div class="canvas-field">
+        <canvas id="canvas"></canvas>
+      </div>
     </div>
   </section>
 </template>
 
 <script>
 import Util from '../components/animation/util'
+import Gradation from '../components/animation/gradation'
 import leef01 from '~/assets/leef/leef_01.png'
 import leef02 from '~/assets/leef/leef_02.png'
 import leef03 from '~/assets/leef/leef_03.png'
-
+// base color of leef #00796B ...?
 export default {
   components: {},
   mounted: () => {
@@ -23,7 +26,11 @@ export default {
 
     const imgPaths = [leef01, leef02, leef03]
     const util = new Util(ctx, imgPaths)
+    util.canvasSizing(canvas)
+    window.addEventListener('resize', util.canvasSizing(canvas))
     util.loadImg()
+    const gradation = new Gradation(ctx, canvas)
+    gradation.render()
   }
 }
 </script>

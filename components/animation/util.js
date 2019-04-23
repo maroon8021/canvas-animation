@@ -1,9 +1,14 @@
+/* eslint-disable no-console */
 export default class Util {
   constructor(ctx, imgPaths) {
     this.ctx = ctx
     this.imgPaths = imgPaths
     this.baseImages = []
     this.images = []
+    this.size = {
+      cvsw,
+      cvsh
+    }
   }
   static animationFrame() {
     return (
@@ -21,9 +26,18 @@ export default class Util {
       window.mscancelAnimationFrame
     )
   }
+  canvasSizing(target) {
+    const windowInnerWidth = window.innerWidth
+    const windowInnerHeight = window.innerHeight
+
+    target.setAttribute('width', windowInnerWidth)
+    target.setAttribute('height', windowInnerHeight)
+
+    this.size.cvsw = windowInnerWidth
+    this.size.cvsh = windowInnerHeight
+  }
   setImages() {
     let aspect = 0
-
     for (let index = 0; index < count; index++) {
       aspect = Math.random() * (aspectMax - aspectMin) + aspectMin
       this.images.push({
@@ -31,8 +45,8 @@ export default class Util {
         img: this.baseImages[
           Math.floor(Math.random() * this.baseImages.length)
         ], // 画像のランダム性はここで決める
-        posx: Math.random() * cvsw,
-        posy: Math.random() * cvsh,
+        posx: Math.random() * this.size.cvsw,
+        posy: Math.random() * this.size.cvsh,
         sizew: imgBaseSizeW * aspect,
         sizeh: imgBaseSizeH * aspect,
         speedy: Math.random() * (speedMax - speedMin) + speedMin,
@@ -40,6 +54,11 @@ export default class Util {
       })
     }
   }
+  /**
+   * 1.
+   * This is first called logic
+   * import images and set method
+   */
   loadImg() {
     let loadedCount = 0
     function onLoad() {
@@ -56,9 +75,16 @@ export default class Util {
     })
   }
 
+  /**
+   * 2.
+   * When all of images are roaded,
+   * this logic start
+   */
   flowStart() {
     this.setImages()
-    setInterval(this.flow.bind(this), 10)
+    console.log('After setImages')
+    console.log(this.images)
+    // setInterval(this.flow.bind(this), 10) // can be replaced to requestAnimationFrame?
   }
 
   flow() {
@@ -66,8 +92,7 @@ export default class Util {
     let cos = 0
     let sin = 0
     const rad = Math.PI / 180
-
-    this.ctx.clearRect(0, 0, cvsw, cvsh)
+    this.ctx.clearRect(0, 0, this.size.cvsw, this.size.cvsh)
     for (idx = 0; idx < count; idx++) {
       this.images[idx].posy += this.images[idx].speedy
       this.images[idx].angle += Math.random() * angleAdd
@@ -88,25 +113,30 @@ export default class Util {
         this.images[idx].sizew,
         this.images[idx].sizeh
       ) // いままで固定の一枚のimgを使っていたが、this.imagesが持つimgを使う
-      this.ctx.setTransform(1, 0, 0, 1, 0, 0)
+      this.ctx.setTransform(1, 0, 0, 1, 0, 0) // loopの外にあるclearRectでちゃんと全消しできるようにresetする必要がある
+
       if (this.images[idx].posy >= cvsh) {
+        // 画面の一番下だったら
         this.images[idx].posy = -this.images[idx].sizeh
         // eslint-disable-next-line standard/computed-property-even-spacing
         this.images[idx].img = this.baseImages[
           Math.floor(Math.random() * this.baseImages.length)
         ] // 画像も切り替える
+
+        // 下に到達したら、そこでポジションを保持？
+        // 画面のどのあたりを専有しているのかを把握できるようにする
       }
     }
   }
 }
 
-const count = 40 // Can be changed
+const count = 60 // Can be changed
 const aspectMax = 1.5
 const aspectMin = 0.5
 const cvsw = 900
 const cvsh = 900
-const imgBaseSizeW = 15
-const imgBaseSizeH = 18.5
+const imgBaseSizeW = 30
+const imgBaseSizeH = 25
 const speedMax = 1.2
 const speedMin = 0.3
-const angleAdd = 4
+const angleAdd = 3.5
