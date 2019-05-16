@@ -1,22 +1,41 @@
 <template>
-  <section class="container">
-    <div class="header-part">
-      <h1 class="title">Main Page</h1>
-      <div class="canvas-field">
-        <canvas id="canvas"></canvas>
-      </div>
-    </div>
-  </section>
+  <div>
+    <section class="hero main-bg-image"></section>
+    <Header />
+    <section class="container main">
+      <h2>Nana Mikitani</h2>
+    </section>
+  </div>
 </template>
 
 <script>
+import Header from '../components/Header.vue'
 export default {
-  components: {},
+  components: {
+    Header
+  },
   mounted: () => {}
 }
 </script>
 
-<style>
+<style lang="scss">
+.main-bg-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: url('~assets/kv.jpg');
+  background-size: 100%;
+  min-height: 1920px;
+  width: 100%;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.container.main {
+  margin-top: 1000px;
+  padding: 3%;
+  z-index: 10;
+}
 .container {
   margin: 0 auto;
   min-height: 100vh;

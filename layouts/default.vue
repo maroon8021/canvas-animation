@@ -3,7 +3,15 @@
     <nuxt />
   </div>
 </template>
-
+<script>
+export default {
+  head: {
+    bodyAttrs: {
+      class: 'has-navbar-fixed-top'
+    }
+  }
+}
+</script>
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
