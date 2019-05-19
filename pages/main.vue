@@ -3,7 +3,14 @@
     <section class="hero main-bg-image"></section>
     <Header />
     <section class="container main">
-      <h2>Nana Mikitani</h2>
+      <div class="columns">
+        <div class="column">
+          First column
+        </div>
+        <div class="column">
+          Second column
+        </div>
+      </div>
     </section>
   </div>
 </template>

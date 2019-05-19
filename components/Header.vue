@@ -5,7 +5,7 @@
     aria-label="main navigation"
   >
     <div class="navbar-brand">
-      <h1 class="title">RawCorpSite</h1>
+      <h1 class="subtitle">RawCorpSite</h1>
 
       <a
         role="button"
