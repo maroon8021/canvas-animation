@@ -2,14 +2,10 @@
   <div>
     <section class="hero main-bg-image"></section>
     <Header />
-    <section class="container main">
+    <section class="hero main">
       <div class="columns">
-        <div class="column">
-          First column
-        </div>
-        <div class="column">
-          Second column
-        </div>
+        <div class="column column-left">First column</div>
+        <div class="column column-right">Second column</div>
       </div>
     </section>
   </div>
@@ -38,17 +34,21 @@ export default {
   z-index: 1;
 }
 
-.container.main {
-  margin-top: 1000px;
-  padding: 3%;
-  z-index: 10;
-}
-.container {
+.hero {
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   text-align: center;
+  &.main {
+    margin-top: 1000px;
+    padding: 3%;
+    z-index: 15;
+  }
+
+  & .columns {
+    z-index: 15;
+  }
 }
 
 .title {
