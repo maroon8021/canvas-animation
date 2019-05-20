@@ -7,6 +7,22 @@
         <div class="column column-left">First column</div>
         <div class="column column-right">Second column</div>
       </div>
+      <div class="columns">
+        <div class="column column-left">First column</div>
+        <div class="column column-right">Second column</div>
+      </div>
+      <div class="columns">
+        <div class="column column-left">First column</div>
+        <div class="column column-right">Second column</div>
+      </div>
+      <div class="columns">
+        <div class="column column-left">First column</div>
+        <div class="column column-right">Second column</div>
+      </div>
+      <div class="columns">
+        <div class="column column-left">First column</div>
+        <div class="column column-right">Second column</div>
+      </div>
     </section>
   </div>
 </template>
@@ -42,12 +58,25 @@ export default {
   text-align: center;
   &.main {
     margin-top: 1000px;
-    padding: 3%;
+    padding: 3% 0;
     z-index: 15;
   }
 
   & .columns {
     z-index: 15;
+    & .column {
+      height: 300px;
+    }
+
+    & .column-left {
+      background-color: #fff59d;
+      opacity: 0.8;
+    }
+    & .column-right {
+      margin-top: 200px;
+      background-color: #ffffff;
+      opacity: 0.8;
+    }
   }
 }
 

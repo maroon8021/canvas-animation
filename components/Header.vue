@@ -31,7 +31,11 @@
 </template>
 
 <style lang="scss">
-nav.navbar {
+nav.navbar.is-fixed-top {
   z-index: 5;
+}
+
+.navbar-brand {
+  z-index: 20;
 }
 </style>
