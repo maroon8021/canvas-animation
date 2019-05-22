@@ -33,6 +33,7 @@
 <style lang="scss">
 nav.navbar.is-fixed-top {
   z-index: 5;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .navbar-brand {
