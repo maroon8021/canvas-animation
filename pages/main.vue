@@ -2,6 +2,9 @@
   <div>
     <section class="hero main-bg-image"></section>
     <Header />
+    <section class="hero">
+      <h2 class="kv-title">Page Title</h2>
+    </section>
     <section class="hero main">
       <div class="columns">
         <div class="column column-left">First column</div>
@@ -42,8 +45,9 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  background-image: url('~assets/kv.jpg');
-  background-size: 100%;
+  background-image: url('~assets/kv.png');
+  background-size: 500px;
+  background-position: bottom center;
   min-height: 1920px;
   width: 100%;
   background-repeat: no-repeat;
