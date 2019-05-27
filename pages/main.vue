@@ -52,6 +52,7 @@ export default {
   width: 100%;
   background-repeat: no-repeat;
   z-index: 1;
+  background-color: #e4e1b0;
 }
 
 .hero {
@@ -81,6 +82,13 @@ export default {
       background-color: #ffffff;
       opacity: 0.8;
     }
+  }
+}
+.kv {
+  &-title {
+    font-size: 30px;
+    color: #62ac74;
+    z-index: 10;
   }
 }
 
