@@ -1,17 +1,22 @@
 <template>
   <div>
+    <!--
     <section class="hero main-bg-image"></section>
     <img class="bg-image" src="~assets/kv.png" />
+    -->
     <!--
     <Header />
     -->
-    <section class="hero">
-      <h2 class="kv-title">Page Title</h2>
+    <section class="hero kv">
+      <h2 class="kv-title">Nana Mikitani</h2>
+      <p class="kv-sub-text">NANA MIKITANI</p>
     </section>
     <section class="hero main">
       <div class="columns">
         <div class="column column-left">
-          <h3 class="column-left-title">Profile</h3>
+          <div class="column-inner">
+            <h3 class="column-left-title">Profile</h3>
+          </div>
         </div>
         <div class="column column-right">
           <h3>Nana</h3>
@@ -75,8 +80,9 @@ export default {
   display: flex;
   justify-content: center;
   //text-align: center;
+  margin-top: -52px;
   &.main {
-    margin-top: 1000px;
+    //margin-top: 1000px;
     padding: 3% 0;
     z-index: 15;
   }
@@ -111,11 +117,23 @@ export default {
   }
 }
 .kv {
+  background-color: #e4e1b0;
   &-title {
-    font-size: 30px;
+    font-size: 60px;
     color: #62ac74;
     z-index: 10;
     text-align: center;
+  }
+  &-sub {
+    &-text {
+      position: absolute;
+      top: 42%;
+      left: 20%;
+      font-size: 125px;
+      text-align: center;
+      margin-top: -20px;
+      color: rgba($color: #fff, $alpha: 0.2);
+    }
   }
 }
 
